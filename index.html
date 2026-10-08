@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#24102f">
+    <meta name="description" content="Master Avenger BR — sorteador de números e nomes com identidade gamer.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/master-avenger-top-shield.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <title>Master Avenger BR — Sorteador</title>
+</head>
+<body>
+    <div class="page-background" aria-hidden="true"></div>
+    <div class="page-overlay" aria-hidden="true"></div>
+
+    <header class="brand-bar">
+        <a class="brand" href="./" aria-label="Master Avenger BR - início">
+            <span class="brand-mark"><img src="assets/master-avenger-top-shield.png" alt="Escudo Master Avenger BR"></span>
+            <span class="brand-copy">
+                <strong>MASTER AVENGER</strong>
+                <small>BR • SORTEIO DA LIGA</small>
+            </span>
+        </a>
+        <span class="status-pill"><span class="status-dot"></span> SORTEIO ONLINE</span>
+    </header>
+
+    <main class="container">
+        <section class="hero" aria-labelledby="page-title">
+            <div class="eyebrow"><span></span> BATALHA PELO SORTEIO <span></span></div>
+            <h1 id="page-title">MASTER <span>AVENGER</span> BR</h1>
+            <p class="hero-description">Escolha o modo, adicione os participantes e deixe a sua sorte definir os vencedores.</p>
+
+            <div class="draw-card" aria-label="Área do sorteio">
+                <div class="card-glow" aria-hidden="true"></div>
+                <div class="card-header">
+                    <div>
+                        <span class="section-kicker">ARENA DO SORTEIO</span>
+                        <h2 id="modeTitle">Sorteio por números</h2>
+                    </div>
+                    <span class="round-badge">SORTEIO DA LIGA</span>
+                </div>
+
+                <div class="mode-switch" role="tablist" aria-label="Modo do sorteio">
+                    <button class="mode-button active" id="numberMode" type="button" role="tab" aria-selected="true">🔢 Números</button>
+                    <button class="mode-button" id="nameMode" type="button" role="tab" aria-selected="false">👥 Nomes</button>
+                </div>
+
+                <div id="numberPanel" class="mode-panel" role="tabpanel">
+                    <label for="number">NÚMEROS DISPONÍVEIS</label>
+                    <div class="input-wrap">
+                        <input type="number" id="number" min="1" step="1" inputmode="numeric" placeholder="Ex.: 50" aria-describedby="number-help">
+                        <span>MAX</span>
+                    </div>
+                    <small id="number-help">O sorteio escolherá números únicos entre 1 e o limite informado.</small>
+                </div>
+
+                <div id="namePanel" class="mode-panel hidden" role="tabpanel" aria-hidden="true">
+                    <label for="names">PARTICIPANTES</label>
+                    <textarea id="names" rows="7" placeholder="Digite um nome por linha...&#10;&#10;Ex.:&#10;Matheus&#10;João&#10;Maria&#10;Carlos"></textarea>
+                    <small>Você pode colar vários nomes de uma vez. Separe por linha, vírgula ou ponto e vírgula.</small>
+
+                    <div class="quantity-row">
+                        <div>
+                            <label for="quantity">QUANTIDADE DE VENCEDORES</label>
+                            <div class="input-wrap compact">
+                                <input type="number" id="quantity" min="1" value="1" step="1" inputmode="numeric">
+                                <span>NOMES</span>
+                            </div>
+                        </div>
+                        <div class="participants-count" aria-live="polite">
+                            <span>PARTICIPANTES</span>
+                            <strong id="participantsCount">0</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="draw-button" id="drawButton" type="button">
+                    <span class="button-icon">⚔</span>
+                    <span id="drawButtonText">SORTEAR NÚMERO</span>
+                    <span class="button-arrow">→</span>
+                </button>
+                <p class="error-message" id="errorMessage" role="alert" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modalClosed" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="content" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+            <button class="modal-close" id="closeModal" type="button" aria-label="Fechar resultado">×</button>
+            <span class="winner-label">⚡ VENCEDOR<span id="winnerPlural"> DEFINIDO</span> ⚡</span>
+            <p id="resultTitle">O resultado da arena</p>
+            <div class="winner-stage">
+                <img class="result-shield" src="assets/master-avenger-top-shield.png" alt="Escudo Master Avenger BR">
+                <div class="winner-rays" aria-hidden="true"></div>
+                <div class="results-list" id="resultsList" aria-live="assertive"></div>
+            </div>
+            <p class="winner-caption">Master Avenger BR • Arena oficial</p>
+            <button class="again-button" id="againButton" type="button">SORTEAR NOVAMENTE</button>
+        </div>
+    </div>
+</body>
+</html>
