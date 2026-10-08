@@ -292,12 +292,14 @@ h1 span {
 
 .result-shield {
     position: absolute;
-    width: 96px;
-    height: 96px;
+    width: 130px;
+    height: 130px;
     object-fit: contain;
     z-index: 0;
+    opacity: 0.18 !important;
     filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
-    opacity: .18;
+    pointer-events: none;
+    user-select: none;
     animation: shieldPulse 2.4s ease-in-out infinite;
 }
 
@@ -306,7 +308,7 @@ h1 span {
     50% { transform: scale(1.045); }
 }
 
-.winner-rays { position: absolute; z-index: 0; width: 190px; height: 190px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 7%, rgba(255,216,74,.18) 8% 10%, transparent 11% 18%, rgba(139,77,255,.18) 19% 21%, transparent 22% 29%, rgba(255,216,74,.18) 30% 32%, transparent 33% 100%); animation: spin 8s linear infinite; }
+.winner-rays { position: absolute; z-index: 1; width: 190px; height: 190px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 7%, rgba(255,216,74,.18) 8% 10%, transparent 11% 18%, rgba(139,77,255,.18) 19% 21%, transparent 22% 29%, rgba(255,216,74,.18) 30% 32%, transparent 33% 100%); animation: spin 8s linear infinite; }
 .result { position: relative; min-width: 150px; padding: 35px 22px; color: #fff; font-size: clamp(3.7rem, 13vw, 6.5rem); line-height: 0.85; font-weight: 900; letter-spacing: -0.06em; text-shadow: 0 0 30px rgba(255, 216, 74, 0.4); }
 .winner-reveal { animation: winnerReveal 0.55s cubic-bezier(.2,1.5,.4,1) both; }
 .winner-caption { color: #8f8999; font-size: 0.61rem; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -472,7 +474,7 @@ h1 span {
 
 .results-list {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     max-height: 315px;
     overflow-y: auto;
